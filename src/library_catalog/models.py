@@ -1,5 +1,5 @@
 class Book:
-    def __init__(self, id, title, author, year, genre, pages, available=True):
+    def __init__(self, id, title, author, year, genre, pages, available=True, description=None, cover_url=None):
         self.id = id
         self.title = title
         self.author = author
@@ -7,6 +7,8 @@ class Book:
         self.genre = genre
         self.pages = pages
         self.available = available
+        self.description = description
+        self.cover_url = cover_url
 
     def to_dict(self):
         return {
@@ -16,7 +18,9 @@ class Book:
             "year": self.year,
             "genre": self.genre,
             "pages": self.pages,
-            "available": self.available
+            "available": self.available,
+            "description": self.description,
+            "cover_url": self.cover_url
         }
 
     @classmethod
