@@ -1,27 +1,20 @@
-class Book:
-    def __init__(self, id, title, author, year, genre, pages, available=True):
-        self.id = id
-        self.title = title
-        self.author = author
-        self.year = year
-        self.genre = genre
-        self.pages = pages
-        self.available = available
+from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.ext.declarative import declarative_base
 
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "author": self.author,
-            "year": self.year,
-            "genre": self.genre,
-            "pages": self.pages,
-            "available": self.available
-        }
+Base = declarative_base()
 
-    @classmethod
-    def from_dict(cls, data):
-        return cls(**data)
+class Book(Base):
+    __tablename__ = "books"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    author = Column(String)
+    year = Column(Integer)
+    genre = Column(String)
+    pages = Column(Integer)
+    available = Column(Boolean, default=True)
+
+
 
 
 """id (уникальный идентификатор)
