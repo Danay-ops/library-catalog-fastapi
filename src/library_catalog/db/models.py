@@ -13,6 +13,8 @@ class Book(Base):
     genre = Column(String)
     pages = Column(Integer)
     available = Column(Boolean, default=True)
+    description = Column(String)
+    cover_url = Column(String)
 
 
 
